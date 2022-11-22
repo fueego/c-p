@@ -1,0 +1,76 @@
+<div class="game-wrapper">
+  <ng-container *ngIf="gameSettings$ | async as gameSettings">
+    <div class="title">
+      <h3>Game type: {{ gameSettings.gameType }}</h3>
+    </div>
+
+    <div class="buttons">
+      <button
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="handlePlayeBtn(gameSettings.gameType)"
+      >
+        Play
+      </button>
+      <button
+        mat-button
+        mat-raised-button
+        color="warn"
+        (click)="handleResetBtn()"
+      >
+        Reset
+      </button>
+    </div>
+
+    <div class="players">
+      <div class="score_1">
+        <span>Player 1 score: </span>
+        <strong>{{ gameSettings.player1Score }}</strong>
+      </div>
+
+      <div class="score_2">
+        <span>Player 2 score: </span>
+        <strong>{{ gameSettings.player2Score }}</strong>
+      </div>
+    </div>
+
+    <ng-container *ngIf="gameSettings.gameType === 'people'; else starships">
+      <div
+        class="players players-game"
+        *ngIf="peopleResp$ | async as pplResponse; else gameNotStarted"
+      >
+        <div class="player1">
+          <app-people-game-card [peopleResponse]="pplResponse[0]">
+          </app-people-game-card>
+        </div>
+
+        <div class="player2">
+          <app-people-game-card [peopleResponse]="pplResponse[1]">
+          </app-people-game-card>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #starships>
+      <div
+        class="players players-game"
+        *ngIf="starshipsResp$ | async as starShipResponse; else gameNotStarted"
+      >
+        <div class="player1">
+          <app-stars-ship-game-card [shipResponse]="starShipResponse[0]">
+          </app-stars-ship-game-card>
+        </div>
+
+        <div class="player2">
+          <app-stars-ship-game-card [shipResponse]="starShipResponse[1]">
+          </app-stars-ship-game-card>
+        </div>
+      </div>
+    </ng-template>
+  </ng-container>
+</div>
+
+<ng-template #gameNotStarted>
+  <h3>Press "Play" Btn to start</h3>
+</ng-template>

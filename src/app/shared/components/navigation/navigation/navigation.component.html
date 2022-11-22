@@ -1,0 +1,9 @@
+<mat-toolbar color="primary">
+  <h2>Code&Pepper - Star Wars Game</h2>
+
+  <app-game-type-dropdown
+    [gameSettings]="gameSettings$ | async"
+    (changeGameType)="handleGameType($event)"
+  >
+  </app-game-type-dropdown>
+</mat-toolbar>

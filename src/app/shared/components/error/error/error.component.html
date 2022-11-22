@@ -1,0 +1,13 @@
+<div class="snack">
+  <span matSnackBarLabel>There was data issue, press PLAY button again</span>
+  <span matSnackBarActions>
+    <button
+      mat-raised-button
+      color="warn"
+      matSnackBarAction
+      (click)="snackBarRef.dismissWithAction()"
+    >
+      OK
+    </button>
+  </span>
+</div>

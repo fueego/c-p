@@ -1,0 +1,29 @@
+.game-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .buttons {
+        width: 15%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .players {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 1.5rem
+    }
+
+    [class^="player"] {
+        width: 45%;
+
+        .score {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+<mat-form-field appearance="fill">
+  <mat-label>Game Type</mat-label>
+  <mat-select [formControl]="gameType" (selectionChange)="handleSelection()">
+    <mat-option *ngFor="let game of gameOptions" [value]="game">
+      {{ game }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
